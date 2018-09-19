@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+.DS_Store
+.DS_Store
+first/.DS_Store
+first/lodtask-demo/.DS_Store
