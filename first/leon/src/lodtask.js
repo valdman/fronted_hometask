@@ -1,10 +1,10 @@
 import fetch from 'node-fetch';
-import { seekInfo } from './dataHandler';
-import { pushInfo } from './dataHandler';
+import { seekInfo, pushInfo } from './dataHandler';
+import { baseLink } from './index';
 
 export const lodtask = () => {
     const ans = [];
-    const baseLink = "https://fund.mipt.ru/api/pages";
+
 
     function requestTree(page) {
         return fetch(`${baseLink}/${page}`)
