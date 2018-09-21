@@ -1,4 +1,4 @@
 import {lodtask} from './lodtask';
 
-lodtask({ingredientsArray: ["potato", "milk"]})
+lodtask()
     .then(answer => console.log(answer));
