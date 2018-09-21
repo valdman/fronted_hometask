@@ -1,45 +1,43 @@
 import fetch from 'node-fetch';
-import { request } from 'https';
 
 export const lodtask = ({link}) => {
     const requestApi = (link, path) => {
         return fetch(link + path)
             .then(res => res.json())
-            .then(data => {
+            .then(({id, url, description, creatingTime}) => {
                 return {
-                    id: data.id,
-                    url: data.url,
-                    description: data.description,
-                    creatingTime: data.creatingTime
+                    id,
+                    url,
+                    description,
+                    creatingTime
                 }
             })
+    }
+
+    function getAllPaths(nodes) {
+        let paths = [];
+
+        (function searchPaths(nodesArr, beginPath) {
+            nodesArr.forEach(({nodes, pageName}) => {
+                nodes.length ?
+                    searchPaths(nodes, `${beginPath}/${pageName}`) :
+                    paths.push(`${beginPath}/${pageName}`);
+            })
+        })(nodes, "");
+
+        return paths;
     }
 
     return fetch(`${link}/tree`)
         .then(res => res.json())
         .then(data => data.nodes)
-        .then(nodes => {
-            let paths = [];
-
-            function searchPaths(nodesArr, beginPath) {
-                nodesArr.forEach(node => {
-                    if (node.nodes.length) {
-                        searchPaths(node.nodes, `${beginPath}/${node.pageName}`);
-                    } else {
-                        paths.push(`${beginPath}/${node.pageName}`);
-                    }
-                })
-            };
-
-            searchPaths(nodes, "");
-
-            return paths;
-        })
+        .then(nodes => getAllPaths(nodes))
         .then(paths => {
             return [...Array(paths.length).keys()].map(value => requestApi(link, paths[value]));
         })
         .then(requests => {
             return Promise.all(requests)
         })
+        .catch(err => err.message);
 }
 
