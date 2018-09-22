@@ -22,6 +22,6 @@ export const pushInfo = ({ creatingTime, description, url, id }) => {
         id: id,
         creatingTime: creatingTime,
         description: description,
-        url: `${baseLink}/${url ? url : ''}`
+        url: `${baseLink}/${url}`
     }
 };

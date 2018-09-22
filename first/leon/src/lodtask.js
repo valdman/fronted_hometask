@@ -3,8 +3,6 @@ import { seekInfo, pushInfo } from './dataHandler';
 import { baseLink } from './index';
 
 export const lodtask = () => {
-    const ans = [];
-
 
     function requestTree(page) {
         return fetch(`${baseLink}/${page}`)
@@ -16,32 +14,27 @@ export const lodtask = () => {
 
     function sendAll(req) {
         return Promise.all(req)
-            .then(() => {
-                return "ok"
+            .then((res) => {
+                return res
             })
     }
 
-    function sendReq(url, index) {
+    function sendReq(url) {
         return fetch(url)
             .then(res => res.json())
-            .then(res => {
-                //console.log(pushInfo(res, index));
-                ans.push(pushInfo(res, index));
-                //console.log(ans);
+            .then((res) => {
+                return pushInfo(res);
             })
             .catch((err) => {
-                console.log("Unable to fetch or JSONify page with url: ", url)
+                console.log("Unable to fetch or JSONify page with url: ", err)
             });
     }
 
     return requestTree("tree")
         .then(res => {
-            //console.log("lol", seekInfo(res));
             return seekInfo(res);
-            //return ans
         })
         .then(arr => {
-            return sendAll(arr.map((value, id) => sendReq(value.url, id)));
+            return sendAll(arr.map((value) => sendReq(value.url)));
         })
-        .then(() => ans)
 }
