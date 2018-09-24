@@ -1,17 +1,10 @@
-var jsonBox = [];
-export function parseTree (jsonValue, longUrl) {
-    var value;
-    for (var key in jsonValue){
-        value = jsonValue[key];
-        if (typeof(value) === 'string') {
-            longUrl += value + "/";
+export function treeParser(jsonTree) {
+    let nodes = jsonTree.nodes;
+    function nodesParser(jsonObj, url, jsonBox) {
+            url += jsonObj.pageName + '/';
+            jsonBox.push(url);
+            jsonObj['nodes'].map(result => nodesParser(result, url, jsonBox));
+            return jsonBox
         }
-        else if (typeof(value) === 'object') {
-            if (jsonBox.indexOf(longUrl) === -1) {
-                jsonBox.push(longUrl);
-            }
-            parseTree(value, longUrl);
-        }
-    }
-    return jsonBox;
+    return [].concat(...nodes.map(value => nodesParser(value, '/', [])));  
 }
