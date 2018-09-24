@@ -1,4 +1,6 @@
-import {lodtask} from './lodtask';
+import { lodtask } from './lodtask';
 
-lodtask({ingredientsArray: ["potato", "milk"]})
+const baseLink = "https://fund.mipt.ru/api/pages";
+
+lodtask(baseLink)
     .then(answer => console.log(answer));

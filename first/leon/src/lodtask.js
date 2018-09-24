@@ -1,34 +1,30 @@
 import fetch from 'node-fetch';
+import { seekInfo, pushInfo } from './dataHandler';
 
-export const lodtask = ({ingredientsArray}) => {
-    const ingredientsArgs = ingredientsArray.join(",");
-  
-    const requestApi = (ingredients, page) => {
-        return fetch(`http://www.recipepuppy.com/api/?i=${ingredients}&p=${page}`)
-        .then((res) => res.json())
-        .catch(err => {
-            //console.log("Yet another broken page: ", err);
-            return Promise.resolve([]);
-        })
-        .then((res) => res.results);
+export const lodtask = (baseLink) => {
+
+    function requestTree(page) {
+        return fetch(`${baseLink}/${page}`)
+            .then((res) => res.json())
+            .catch(err => {
+                console.log(err);
+            })
     };
 
-    const compareRecipes = (a, b) => {
-        const getComlexity = (recipe) => recipe.ingredients.split(",").length;
-        return Math.sign(getComlexity(a) - getComlexity(b));
+    function sendAll(req) {
+        return Promise.all(req)   
     }
-  
-    const requests = [...Array(20).keys()].map((value) => requestApi(ingredientsArgs, value + 1));
-  
-    return Promise.all(requests).then(res => {
-        const sortedRecipies = res.reduce((memo, current) => memo.concat(current), [])
-                                .sort(compareRecipes)
-                                .slice(0, 3);
 
-        return sortedRecipies.map(r => ({
-                Title: r.title,
-                Link: r.href,
-                Ingredients: r.ingredients
-            }));
-      });  
+    function sendReq(url) {
+        return fetch(url)
+            .then(res => res.json())
+            .then((res) =>  pushInfo(res, baseLink))
+            .catch((err) => {
+                console.log("Unable to fetch or JSONify page with url: ", err)
+            });
+    }
+
+    return requestTree("tree")
+        .then(res =>  seekInfo(res, baseLink))
+        .then(arr => sendAll(arr.map((value) => sendReq(value.url))))
 }
