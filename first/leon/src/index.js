@@ -1,6 +1,6 @@
 import { lodtask } from './lodtask';
 
-export const baseLink = "https://fund.mipt.ru/api/pages";
+const baseLink = "https://fund.mipt.ru/api/pages";
 
-lodtask()
+lodtask(baseLink)
     .then(answer => console.log(answer));

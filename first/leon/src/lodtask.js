@@ -1,8 +1,7 @@
 import fetch from 'node-fetch';
 import { seekInfo, pushInfo } from './dataHandler';
-import { baseLink } from './index';
 
-export const lodtask = () => {
+export const lodtask = (baseLink) => {
 
     function requestTree(page) {
         return fetch(`${baseLink}/${page}`)
@@ -13,28 +12,19 @@ export const lodtask = () => {
     };
 
     function sendAll(req) {
-        return Promise.all(req)
-            .then((res) => {
-                return res
-            })
+        return Promise.all(req)   
     }
 
     function sendReq(url) {
         return fetch(url)
             .then(res => res.json())
-            .then((res) => {
-                return pushInfo(res);
-            })
+            .then((res) =>  pushInfo(res, baseLink))
             .catch((err) => {
                 console.log("Unable to fetch or JSONify page with url: ", err)
             });
     }
 
     return requestTree("tree")
-        .then(res => {
-            return seekInfo(res);
-        })
-        .then(arr => {
-            return sendAll(arr.map((value) => sendReq(value.url)));
-        })
+        .then(res =>  seekInfo(res, baseLink))
+        .then(arr => sendAll(arr.map((value) => sendReq(value.url))))
 }
