@@ -1,11 +1,14 @@
 export  function prepare(paths, pages){
+    const Results = []; 
     paths.reduce((x, element) => { 
         pages.map(({id, url, description, creatingTime}) => { 
             id == element ?
-       console.log({"id":id, "url":url, "description":description, "creatingTime":creatingTime}):
+       Results.push({"id":id, "url":url, "description":description, "creatingTime":creatingTime}):
                 null; 
     });
+    
     });
+    return Results; 
     }
    
 
