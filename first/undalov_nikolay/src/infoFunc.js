@@ -27,4 +27,4 @@ export const CollectData =({url,addUrl}) => {
             return [...Array(arrayOfPaths.length).keys()].map(value => getPageInfo(arrayOfPaths[value]))
         })
 .then(r => { return Promise.all(r)});
-    }
+    };
