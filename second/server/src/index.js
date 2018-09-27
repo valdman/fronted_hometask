@@ -41,6 +41,20 @@ s.post("/buy", (req, res) => {
     res.status(404).send("User not found");
 })
 
+s.get("/cart", (req, res) => {
+    const token = req.cookies.token;
+    if(!token) {
+        res.status(403).send("Token needed").end();
+        return;
+    }
+    const cart = users.getCart(token);
+    if(cart !== -1) {
+        res.send(cart).end();
+        return;
+    }
+    res.end();
+})
+
 s.get("/users", (req, res) => {
     res.send(JSON.stringify(users.users));
     res.end();

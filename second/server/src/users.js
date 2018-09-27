@@ -31,6 +31,13 @@ class UsersRepo {
         this.users[i].items = !this.users[i].items ? [ itemId ] : [...this.users[i].items, itemId];
         return itemId;
     }
+
+    getCart = (token) => {
+        const i = this.users.findIndex((u) => u.token === token);
+        if(i === -1 ) return -1;
+        return this.users[i].items;
+        
+    }
 }
 
 export default new UsersRepo();
