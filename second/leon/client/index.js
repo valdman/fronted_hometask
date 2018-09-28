@@ -33,7 +33,6 @@ const addCard = (obj) => {
         <div class="cardName">${obj.name}</div>
     </div>
     `;
-
     itemContainer.innerHTML += markup;
 };
 
