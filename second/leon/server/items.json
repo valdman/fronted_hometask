@@ -1,37 +1,37 @@
 [
     {
         "id": 1,
-        "name": "White Window",
-        "price": 12,
-        "desc": "Lorem ipsum dolor sit amet jambul the best",
-        "pic": "assets/white_window.png"
+        "name": "Пьянительный алкоголь",
+        "price": 18,
+        "desc": "Очень хорошиий, купите пожалуйста, недорого",
+        "pic": "http://www.theliquorstore.ro/image/catalog/caramel1.jpg"
     },
     {
         "id": 2,
-        "name": "AK-47",
-        "price": 9,
-        "desc": "Lorem ipsum dolor sit amet jambul the best",
-        "pic": "assets/ak_47.jpg"
+        "name": "Телефон без кнопок",
+        "price": 1000,
+        "desc": "Современно и технологично, дорого и непонятно",
+        "pic": "http://i.allo.ua/media/catalog/product/cache/1/image/425x295/799896e5c6c37e11608b9f8e1d047d15/a/p/apple_iphone_x_64gb_space_gray_4.jpeg"
     },
     {
         "id": 3,
-        "name": "OG Hydroponic",
-        "price": 14,
-        "desc": "Lorem ipsum dolor sit amet jambul the best",
-        "pic": "assets/hydroponic.jpg"
+        "name": "Почти каша",
+        "price": 2,
+        "desc": "Просто добавь воды. Вкусно и питательно. Здорово прекрасно.",
+        "pic": "http://st.depositphotos.com/1003722/2418/i/950/depositphotos_24180259-stock-photo-single-golden-ear-of-wheat.jpg"
     },
     {
         "id": 4,
-        "name": "Semsi Star",
+        "name": "Аня",
         "price": 17,
-        "desc": "Lorem ipsum dolor sit amet jambul the best",
-        "pic": "assets/star.png"
+        "desc": "Точнее просто ее парик",
+        "pic": "http://vignette.wikia.nocookie.net/vocaloid/images/a/aa/MIKU_V2.png/revision/latest?cb=20160613074256&path-prefix=ru"
     },
     {
         "id": 5,
-        "name": "MASS Skulk",
-        "price": 10,
-        "desc": "Lorem ipsum dolor sit amet jambul the best",
-        "pic": "assets/skulk.jpg"
+        "name": "Друг",
+        "price": 399,
+        "desc": "Clamate ego solus",
+        "pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaM8jTSHNp6gQMhBW6IS2RCorlhGc_xs5DhxFNNuba5X7T7uS8"
     }
 ]

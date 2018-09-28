@@ -12,7 +12,6 @@ s.use(cookieParser());
 s.use(bodyParser());
 s.use(cors({
     origin: "http://localhost:5000",
-    //origin: "*",
     methods: ['GET', 'PUT', 'POST', 'DELETE'],
     credentials: true,
 }));
@@ -20,7 +19,6 @@ s.use(cors({
 s.post("/login", (req, res) => {
     const login = req.body.login;
     let token = users.exists(login);
-    console.log(req.body.login);
     if(!token) {
         token = users.create(login);
         res.send({token: token, status: "created"})

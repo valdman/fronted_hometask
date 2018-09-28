@@ -1,6 +1,7 @@
 const itemContainer = document.getElementById("itemContainer");
 const serverLink = "http://localhost:3001";
 const loginInput = document.getElementById("loginInput");
+const popup = document.getElementsByClassName("popup")[0];
 
 const getItems = () => {
 
@@ -25,8 +26,11 @@ const getItems = () => {
 
 const addCard = (obj) => {
     const markup = `
-    <div class="card">
-        <div class="cardName" onclick="buyItem(${obj.id})">${obj.name}</div>
+    <div class="card" onclick="buyItem(${obj.id})" style="background-image: url(${obj.pic}">
+        <div class="cardBlock">
+            <div class="itemName">${obj.name} <span>${obj.price}$</span></div>
+            <div class="itemDesc">${obj.desc}</div>
+        </div>
     </div>
     `;
     itemContainer.innerHTML += markup;
@@ -55,12 +59,13 @@ const logUser = () => {
         },
     };
 
+
     fetch(serverLink + "/login", myInit)
         .then(res => res.json())
         .then(res => {
-            console.log(res.status);
-            //token = res.token;
-            document.cookie = `token=${res.token};expires=${60*10}`;
+            //console.log(res);
+            showHint(res.status)
+            document.cookie = `token=${res.token};expires=${60 * 10}`;
         })
         .catch((err) => conole.log(err));
 };
@@ -81,7 +86,19 @@ const buyItem = (id) => {
     };
 
     fetch(serverLink + "/buy", myInit)
+        .catch(() => console.log("gotcha"))
         .then(res => res)
-        .then(res => console.log(res))
-        .catch((err) => console.log(err));
+        .then(res => {
+            //console.log(res);
+            showHint( res.ok ? "Покуплено" : "Логин?");
+        })
+        .catch((err) => console.log("err"));
+};
+
+const showHint = (str) => {
+    popup.style.display = "block";
+    popup.innerHTML = str;
+    setTimeout(() => {
+        popup.style.display = "none";
+    }, 3000);
 };
