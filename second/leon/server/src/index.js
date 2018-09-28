@@ -20,7 +20,7 @@ s.use(cors({
 s.post("/login", (req, res) => {
     const login = req.body.login;
     let token = users.exists(login);
-    console.log("hello");
+    console.log(req.body.login);
     if(!token) {
         token = users.create(login);
         res.send({token: token, status: "created"})
