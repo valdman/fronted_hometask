@@ -61,9 +61,35 @@ header > div{
     width: auto;
 }
 
-
-
 main {
-    width: 100%;
+    padding: 20px;
+    width: auto;
     height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.card {
+    width: 250px;
+    height: 300px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    border: 2px;
+    border-style: solid;
+    border-radius: 15px;
+    position: relative;
+}
+
+.cardName {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
 }
