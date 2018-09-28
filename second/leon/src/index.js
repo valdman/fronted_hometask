@@ -7,17 +7,20 @@ import {readFileSync} from "fs"
 import users from "./users.js"
 
 const s = express();
+
 s.use(cookieParser());
 s.use(bodyParser());
 s.use(cors({
     origin: "http://localhost:5000",
+    //origin: "*",
     methods: ['GET', 'PUT', 'POST', 'DELETE'],
-    credentials: true
+    credentials: true,
 }));
 
 s.post("/login", (req, res) => {
     const login = req.body.login;
     let token = users.exists(login);
+    console.log("hello");
     if(!token) {
         token = users.create(login);
         res.send({token: token, status: "created"})
@@ -48,6 +51,11 @@ s.get("/users", (req, res) => {
 
 s.delete("/users", (req, res) => {
     users.resetUsers();
+    res.end();
+})
+
+s.get("/test", (req, res) => {
+    res.send("ok");
     res.end();
 })
 

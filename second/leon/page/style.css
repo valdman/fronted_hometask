@@ -1,0 +1,69 @@
+body {
+    width: 100%;
+    margin: 0px;
+}
+header {
+    width: auto;
+    height: 50px;
+    border: 2px;
+    border-style: solid;
+}
+
+header > div{
+    display: flex;
+    width: auto;
+    height: inherit;
+    align-items: center;
+    flex-grow: 1;
+}
+
+
+#leftHeader {
+    float: left;
+    justify-content: flex-start;
+}
+
+#leftHeader > div{
+    padding: 10px;
+    display: inline-block;
+    border: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+#rightHeader {
+    float: right;
+    justify-content: flex-end;
+    width: auto;
+}
+#searchForm {
+    display: inline-block;
+    height: 40px;
+    text-align: center;
+    border: 2px;
+    border-style: solid;
+    border-radius: 5px;
+
+}
+#searchForm > *{
+    display: inline;
+}
+
+#searchInput {
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: 0;
+
+}
+
+#searchButton {
+    width: auto;
+}
+
+
+
+main {
+    width: 100%;
+    height: 100%;
+}
