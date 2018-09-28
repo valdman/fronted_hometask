@@ -7,6 +7,7 @@ header {
     height: 50px;
     border: 2px;
     border-style: solid;
+    background-color: rgb(144, 195, 240);
 }
 
 header > div{
@@ -30,6 +31,8 @@ header > div{
     border-style: solid;
     border-radius: 5px;
     margin-left: 10px;
+
+    background-color: rgba(255, 255, 255, 0.267)
 }
 #rightHeader {
     float: right;
@@ -71,6 +74,7 @@ main {
     justify-content: center;
     align-items: flex-start;
     align-content: flex-start;
+    background-color: rgb(85, 137, 161);
 }
 
 .card {
@@ -84,6 +88,9 @@ main {
     border-style: solid;
     border-radius: 15px;
     position: relative;
+
+    background-image: url(http://img.myloview.fr/stickers/visage-souriant-heureux-400-35153689.jpg);
+    background-size: cover;
 }
 
 .cardName {
@@ -92,4 +99,8 @@ main {
     text-align: center;
     position: absolute;
     bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
 }

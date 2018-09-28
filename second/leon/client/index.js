@@ -1,7 +1,6 @@
 const itemContainer = document.getElementById("itemContainer");
 const serverLink = "http://localhost:3001";
 const loginInput = document.getElementById("loginInput");
-var token = "";
 
 const getItems = () => {
 
@@ -23,6 +22,7 @@ const getItems = () => {
         .catch(() => console.log("cannot Json()"));
     //.then(res => console.log(res));
 };
+
 const addCard = (obj) => {
     const markup = `
     <div class="card">
