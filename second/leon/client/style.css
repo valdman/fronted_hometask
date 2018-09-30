@@ -5,8 +5,8 @@ body {
 header {
     width: auto;
     height: 50px;
-    border: 2px;
-    border-style: solid;
+    /* border: 2px;
+    border-style: solid; */
     background-color: rgb(144, 195, 240);
 }
 
@@ -27,9 +27,12 @@ header > div{
 #leftHeader > div{
     padding: 10px;
     display: inline-block;
+
     border: 2px;
     border-style: solid;
     border-radius: 5px;
+    border-color: rgba(0, 0, 0, 0.09);
+
     margin-left: 10px;
 
     background-color: rgba(255, 255, 255, 0.267)
@@ -88,6 +91,8 @@ main {
     border: 2px;
     border-style: solid;
     border-radius: 15px;
+    border-color: rgb(59, 98, 136);
+
     position: relative;
 
     cursor: pointer;
@@ -95,6 +100,9 @@ main {
     background-image: url(http://img.myloview.fr/stickers/visage-souriant-heureux-400-35153689.jpg);
     background-size: cover;
     background-position: center;
+
+    font-family: 'Marck Script', cursive;
+    font-size: 1.3em;
 }
 
 .cardBlock {
@@ -117,4 +125,12 @@ main {
     width: 80px;
     height: 40px;
     background-color: white;
+}
+
+footer > div {
+    /* display: inline-block; */
+    float: right;
+    margin-right: 20px;
+
+    cursor: pointer;
 }

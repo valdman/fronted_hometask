@@ -62,6 +62,20 @@ s.get("/items", (req, res) => {
     res.end();
 })
 
+s.get("/cart", (req, res) => {
+    const token = req.cookies.token;
+    if(!token) {
+        res.status(403).send("Token needed").end();
+        return;
+    }
+    const cart = users.getCart(token);
+    if(cart !== -1) {
+        res.send(cart).end();
+        return;
+    }
+    res.end();
+})
+
 const port = 3001;
 s.listen(port);
 console.log(`Server started, listening ${port}`);

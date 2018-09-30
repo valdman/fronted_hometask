@@ -6,7 +6,7 @@ const popup = document.getElementsByClassName("popup")[0];
 const getItems = () => {
 
     const myHeaders = new Headers({
-        'Content-Type': 'application/json',
+        //'Content-Type': 'application/json',
         'Accept': 'application/json',
     });
 
@@ -28,7 +28,7 @@ const addCard = (obj) => {
     const markup = `
     <div class="card" onclick="buyItem(${obj.id})" style="background-image: url(${obj.pic}">
         <div class="cardBlock">
-            <div class="itemName">${obj.name} <span>${obj.price}$</span></div>
+            <div class="itemName"><b>${obj.name}</b> <ins>${obj.price}$</ins></div>
             <div class="itemDesc">${obj.desc}</div>
         </div>
     </div>
@@ -42,10 +42,10 @@ getItems()
     });
 
 const logUser = () => {
-    console.log(loginInput.value);
+    //console.log(loginInput.value);
 
     const myHeaders = new Headers({
-        //'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
         'Accept': 'application/json',
     });
 
@@ -53,17 +53,14 @@ const logUser = () => {
         method: 'POST',
         headers: myHeaders,
         //credentials: "omit",
-        //mode: "cors",
-        body: {
-            login: loginInput.value,
-        },
+        body: JSON.stringify({ login: loginInput.value }),
     };
+    console.log("read value: ", loginInput.value)
 
 
     fetch(serverLink + "/login", myInit)
         .then(res => res.json())
         .then(res => {
-            //console.log(res);
             showHint(res.status)
             document.cookie = `token=${res.token};expires=${60 * 10}`;
         })
@@ -72,7 +69,7 @@ const logUser = () => {
 
 const buyItem = (id) => {
     const myHeaders = new Headers({
-        //'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
         'Accept': 'text/plain',
     });
 
@@ -80,17 +77,16 @@ const buyItem = (id) => {
         method: 'POST',
         headers: myHeaders,
         credentials: "include",
-        body: {
-            itemId: id,
-        },
+        body: JSON.stringify({
+            itemId: id
+        }),
     };
 
     fetch(serverLink + "/buy", myInit)
         .catch(() => console.log("gotcha"))
         .then(res => res)
         .then(res => {
-            //console.log(res);
-            showHint( res.ok ? "Покуплено" : "Логин?");
+            showHint(res.ok ? "Покуплено" : "Логин?");
         })
         .catch((err) => console.log("err"));
 };
@@ -101,4 +97,51 @@ const showHint = (str) => {
     setTimeout(() => {
         popup.style.display = "none";
     }, 3000);
+};
+
+const getUsers = () => {
+    const myHeaders = new Headers({
+        //'Content-Type': 'application/json',
+        'Accept': 'application/json',
+    });
+
+    const myInit = {
+        method: 'GET',
+        headers: myHeaders,
+        credentials: "omit",
+    };
+
+    fetch(serverLink + "/users", myInit)
+        .then(res => res.json())
+        .then(res => {
+            showHint("Список в консоли");
+            console.log(res);
+        });
+
+};
+
+
+const deleteUsers = () => {
+    const myHeaders = new Headers({
+        //'Content-Type': 'application/json',
+        'Accept': 'text/plain',
+    });
+
+    const myInit = {
+        method: 'DELETE',
+        headers: myHeaders,
+        //credentials: "include",
+    };
+
+    fetch(serverLink + "/users", myInit)
+        //.then(res => res.json())
+        .then(res => {
+            console.log(res);
+            showHint("Удален");
+        })
+        .catch((err) => {
+            console.log(err);
+            showHint("Ошибка");
+        });
+
 };
