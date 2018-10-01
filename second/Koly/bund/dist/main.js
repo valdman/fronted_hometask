@@ -51,7 +51,6 @@ function login(){
     
 }
 function BuyItem(){
-    console.log(document.cookie);
     return fetch(buyPath,{
         method: "POST",
         credentials: 'include',
