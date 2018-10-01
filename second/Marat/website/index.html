@@ -5,7 +5,9 @@
     <title>RightPlace!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <script src="script.js"></script>
+    <script defer src="./BuyItem.js"></script>
+    <script defer src="./itemsRequest.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <div id="header" class="container">
@@ -14,15 +16,16 @@
         <a class="elems" href="index.html">cart</a>
         
         <div class="right elems">
-            <div id="login" class="input">
-                <input id="txt" placeholder="Login" type="text">
-                <button id="btn" class="button" onclick="someFunc();">Login/Sign up</button>
+            <div id="loginPlace" class="input">
+                <input id="loginInput" placeholder="Login" type="text">
+                <button id="btn" class="button" onclick="logUser()">Login/Sign up</button>
                     
             </div>
         </div>
     </div>
-    <div id="goods" class="cards">
+    <div id="goods" class="container">
         
     </div>
+
 </body>
 </html>
