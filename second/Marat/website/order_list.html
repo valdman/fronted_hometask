@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>RightPlace!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+  <script src="script.js"></script>
+</head>
+<body>
+  <div id="header" class="container">
+    <div class="elems">RightPlace shop</div>
+    <a class="elems" href="index.html">Home</a>
+    <a class="elems" href="order_list.html">cart</a>
+    
+    <div class="right elems">
+        <div id="login" class="input">
+            <input id="txt" placeholder="Login" type="text">
+            <button id="btn" class="button" onclick="someFunc();">Login/Sign up</button>
+        </div>
+    </div>
+</div>
+<div id="goods" class="cards">
+    
+</div>
+
+  <div class="products container elems">
+
+    <div class="item_box">
+      <h3 class="item_title">Cookies</h3>
+      <img src="inb6ja.jpg" width="150" height="161">
+      <p>Цена: <span class="item_price">20</span>$</p>
+      <button class="add_item" data-id="7">Добавить в корзину</button>
+    </div>
+  
+    <div class="item_box">
+      <h3 class="item_title">Mario</h3>
+      <img src="mario_PNG71.png" width="150" height="161">
+      <p>Цена: <span class="item_price">100</span>$</p>
+      <button class="add_item" data-id="2">Добавить в корзину</button>
+    </div>
+  
+      <div class="item_box">
+      <h3 class="item_title">Doshik</h3>
+      <img src="Doshik.png" width="150" height="161">
+      <p>Цена: <span class="item_price">1000</span>$</p>
+      <button class="add_item" data-id="5">Добавить в корзину</button>
+    </div>
+  
+    <button id="checkout">Оформить заказ</button>
+    <button id="clear_cart">Очистить корзину</button>
+    <div id="cart_content"></div>
+    
+  </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+
+.container{
+    display: flex;
+    justify-content: flex-start;
+    height: 40px;
+    flex-wrap: wrap;
+}
+
+.elems{
+    margin: 9px;
+    line-height: 100%;
+}
+.right{
+    margin-left: auto;
+    margin-right: 2em;
+}
+#header{
+    background-color: whitesmoke;
+    min-width: auto;
+    height: 40px;
+    text-align: right;
+    padding-top: 5px;
+ }
+
+
+ 
