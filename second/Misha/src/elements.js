@@ -24,4 +24,17 @@ export function appendElements(elems) {
    elems.map((elem) => {
       wrapper.innerHTML += elem;
    })
+
+   return document.getElementsByClassName('buy');
+}
+
+export function addButtonHandlers(buttons) {
+   Array.from(buttons).map((button) => {
+      button.addEventListener('click', () => {
+         fetch('http://localhost:3001/buy', {
+            method: 'POST' 
+         })
+         .then(res => {console.log(res)})
+      })
+   })
 }

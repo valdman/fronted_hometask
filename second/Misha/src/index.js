@@ -1,12 +1,14 @@
-import '../dist/index.html';
 import './style.less';
 
-import { createElements, appendElements } from './elements.js';
+import { createElements, appendElements, addButtonHandlers } from './elements.js';
+
+let logged = false;
 
 fetch('http://localhost:3001/items')
    .then(res => res.json())
    .then(data => createElements(data))
-   .then(elems => {appendElements(elems)})
+   .then(elems => appendElements(elems))
+   .then((buttons) => {addButtonHandlers(buttons)})
 
 document.getElementById("login").addEventListener('click', () => {
    fetch('http://localhost:3001/login', {
@@ -20,8 +22,14 @@ document.getElementById("login").addEventListener('click', () => {
       document.getElementById('form').style.display = 'none';
       document.getElementById('logged').style.display = 'block';
 
-      isLogged = true;
+      document.cookie = `token=${data.token}`;
+      
+      logged = true;
    })
 });
+
+
+
+
 
 

@@ -86,19 +86,19 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/index.js!./src/style.css":
-/*!*************************************************!*\
-  !*** ./node_modules/css-loader!./src/style.css ***!
-  \*************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/less-loader/dist/cjs.js!./src/style.less":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/less-loader/dist/cjs.js!./src/style.less ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto);", ""]);
+
 
 // module
-exports.push([module.i, "body {\n   margin: 0;\n   padding: 0;\n   font-family: 'Roboto', sans-serif;\n}\n\n.container {\n   margin: 0 auto;\n   padding: 0 15px;\n   max-width: 1200px;\n}\n\n#header {\n   width: 100%;\n   border-bottom: 1px solid #CCC;\n}\n\n#header .container {\n   display: flex;\n   flex-wrap: nowrap;\n   justify-content: space-between;\n   align-items: center;\n}\n\n#header .links {\n   display: flex;\n}\n\n#header .links ul {\n   margin: 0;\n   padding: 0;\n   list-style: none;\n   display: flex;\n   flex-wrap: nowrap;\n}\n\n#header .links ul #logo, \n#header .links ul li a {\n   padding: 15px 20px;\n   text-transform: uppercase;\n}\n\n#header .links ul #logo:hover {\n   cursor: pointer;\n   background-color: #3498db;\n   color: #fff;\n   transition: .3s;\n}\n\n#header .links ul li a {\n   display: block;\n   color: #333333;\n}\n\n#header .links ul li a:hover {\n   background-color: #f5f5f5;\n   cursor: pointer;\n}\n\n#header .form {\n   height: 100%;\n   display: flex;\n   align-items: center;\n}\n\n#header .form input {\n   padding: 5px;\n   margin: 0;\n   outline: none;\n   border: 1px solid #ccc;\n   width: 150px;\n   height: 25px;\n   box-sizing: border-box;\n}\n\n#header .form button {\n   margin: 0;\n   padding: 0 15px;\n   height: 25px;\n   outline: none;\n   border: none;\n   border-radius: 0 5px 5px 0;\n   background-color: #3498db;\n   color: #ffffff;\n   font-size: 12px;\n   text-transform: uppercase;\n}\n\n#header .form button:hover {\n   background-color: #2980b9;\n   cursor: pointer;\n   transition: background-color .3s;\n}\n\n@media screen and (max-width: 500px) {\n   #header {\n      padding-bottom: 20px;\n   }\n\n   #header .container {\n      flex-wrap: wrap;\n   }\n\n   #header .links, #header .form {\n      width: 100%;\n      justify-content: center;\n      margin: 0 auto;\n   }\n}", ""]);
+exports.push([module.i, "body {\n  margin: 0;\n  padding: 0;\n  font-family: 'Roboto', sans-serif;\n}\n.container {\n  margin: 0 auto;\n  padding: 0 15px;\n  max-width: 1200px;\n}\n#header {\n  width: 100%;\n  border-bottom: 1px solid #CCC;\n}\n#header .container {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n@media (max-width: 640px) {\n  #header .container {\n    flex-wrap: wrap;\n  }\n  #header .container .links {\n    width: 100%;\n    margin-bottom: 15px;\n  }\n  #header .container .links ul {\n    justify-content: center;\n  }\n  #header .container #form {\n    width: 100%;\n    justify-content: center;\n    margin-bottom: 15px;\n  }\n  #header .container #form input {\n    width: 175px;\n  }\n}\n#header .links ul {\n  display: flex;\n  flex-wrap: nowrap;\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n#header .links ul li a {\n  display: block;\n  padding: 15px 30px;\n  transition: 0.3s;\n  color: #333333;\n  text-decoration: none;\n  text-transform: uppercase;\n}\n#header .links ul li a:hover {\n  background-color: #f5f5f5;\n}\n#header .links ul #logo {\n  background-color: #3498db;\n  color: #ffffff;\n}\n#header .links ul #logo:hover {\n  background-color: #2980b9;\n}\n#header #form {\n  display: flex;\n  justify-content: flex-end;\n}\n#header #form input,\n#header #form button {\n  box-sizing: border-box;\n  height: 25px;\n}\n#header #form input {\n  padding: 10px;\n  margin-right: -1px;\n  width: 150px;\n  border: 1px solid #CCC;\n  border-radius: 5px 0 0 5px;\n  outline: none;\n  font-size: 12px;\n}\n#header #form button {\n  padding: 0 15px;\n  border: none;\n  border-radius: 0 5px 5px 0;\n  outline: none;\n  background-color: #3498db;\n  color: #ffffff;\n  font-size: 14px;\n  text-transform: uppercase;\n  cursor: pointer;\n}\n#header #form button:hover {\n  background-color: #2980b9;\n}\n#header #logged {\n  display: none;\n}\n#item-wrapper {\n  padding: 15px 0;\n  margin: 0 -15px;\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: flex-start;\n}\n@media (max-width: 640px) {\n  #item-wrapper {\n    justify-content: center;\n  }\n}\n#item-wrapper .item {\n  margin: 0 15px 20px 15px;\n  flex-basis: 250px;\n  border-radius: 5px;\n  border: 1px solid #CCC;\n  overflow: hidden;\n}\n#item-wrapper .item .img-wrapper {\n  border-bottom: 1px solid #CCC;\n  height: 250px;\n}\n#item-wrapper .item .img-wrapper img {\n  width: 100%;\n  height: 100%;\n}\n#item-wrapper .item .text-wrapper {\n  padding: 10px;\n}\n#item-wrapper .item .buy {\n  width: 100%;\n  padding: 10px;\n  border: none;\n  outline: none;\n  background-color: #3498db;\n  color: #ffffff;\n  font-size: 14px;\n  text-transform: uppercase;\n  transition: 0.3s;\n  cursor: pointer;\n}\n#item-wrapper .item .buy:hover {\n  background-color: #2980b9;\n}\n", ""]);
 
 // exports
 
@@ -693,6 +693,50 @@ module.exports = function (css) {
 
 /***/ }),
 
+/***/ "./src/elements.js":
+/*!*************************!*\
+  !*** ./src/elements.js ***!
+  \*************************/
+/*! exports provided: createElements, appendElements, addButtonHandlers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createElements", function() { return createElements; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appendElements", function() { return appendElements; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addButtonHandlers", function() { return addButtonHandlers; });
+function createElements(items) {
+  return items.reduce(function (result, _ref) {
+    var pic = _ref.pic,
+        name = _ref.name,
+        desc = _ref.desc,
+        price = _ref.price,
+        id = _ref.id;
+    result.push("\n         <div class=\"item\">\n            <div class=\"img-wrapper\">\n               <img src=\"".concat(pic, "\" alt=\"\" class=\"item-img\">\n            </div>\n            <div class=\"text-wrapper\">\n               <h3 class=\"name\">").concat(name, "</h3>\n               <p class=\"description\">").concat(desc, "</p>\n               <span class=\"price\">Price: ").concat(price, "$</span>\n            </div>\n            <button class=\"buy\" data-id=\"").concat(id, "\">buy</button>\n         </div>\n      "));
+    return result;
+  }, []);
+}
+function appendElements(elems) {
+  var wrapper = document.getElementById('item-wrapper');
+  elems.map(function (elem) {
+    wrapper.innerHTML += elem;
+  });
+  return document.getElementsByClassName('buy');
+}
+function addButtonHandlers(buttons) {
+  Array.from(buttons).map(function (button) {
+    button.addEventListener('click', function () {
+      fetch('http://localhost:3001/buy', {
+        method: 'POST'
+      }).then(function (res) {
+        console.log(res);
+      });
+    });
+  });
+}
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -702,21 +746,48 @@ module.exports = function (css) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_less__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.less */ "./src/style.less");
+/* harmony import */ var _style_less__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_less__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _elements_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./elements.js */ "./src/elements.js");
 
+
+var logged = false;
+fetch('http://localhost:3001/items').then(function (res) {
+  return res.json();
+}).then(function (data) {
+  return Object(_elements_js__WEBPACK_IMPORTED_MODULE_1__["createElements"])(data);
+}).then(function (elems) {
+  return Object(_elements_js__WEBPACK_IMPORTED_MODULE_1__["appendElements"])(elems);
+}).then(function (buttons) {
+  Object(_elements_js__WEBPACK_IMPORTED_MODULE_1__["addButtonHandlers"])(buttons);
+});
+document.getElementById("login").addEventListener('click', function () {
+  fetch('http://localhost:3001/login', {
+    method: 'POST',
+    body: {
+      login: document.getElementById('login-input').value
+    }
+  }).then(function (res) {
+    return res.json();
+  }).then(function (data) {
+    document.getElementById('form').style.display = 'none';
+    document.getElementById('logged').style.display = 'block';
+    document.cookie = "token=".concat(data.token);
+    logged = true;
+  });
+});
 
 /***/ }),
 
-/***/ "./src/style.css":
-/*!***********************!*\
-  !*** ./src/style.css ***!
-  \***********************/
+/***/ "./src/style.less":
+/*!************************!*\
+  !*** ./src/style.less ***!
+  \************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../node_modules/css-loader!./style.css */ "./node_modules/css-loader/index.js!./src/style.css");
+var content = __webpack_require__(/*! !../node_modules/css-loader!../node_modules/less-loader/dist/cjs.js!./style.less */ "./node_modules/css-loader/index.js!./node_modules/less-loader/dist/cjs.js!./src/style.less");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 

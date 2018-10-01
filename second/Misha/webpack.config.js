@@ -10,43 +10,25 @@ module.exports = {
    },
    module: {
       rules: [
-         // {
-         //    test: /\.js/,
-         //    use: {
-         //       loader: 'babel-loader',
-         //       options: {
-         //          presets: ['@babel/preset-env'],
-         //          plugins: ['@babel/plugin-transform-runtime']
-         //       }
-         //    }
-         // },
+         {
+            test: /\.js/,
+            use: {
+               loader: 'babel-loader',
+               options: {
+                  presets: ['@babel/preset-env']
+               }
+            }
+         },
          {
             test: /\.less/,
             use: ['style-loader', 'css-loader', 'less-loader']
-         },
-         {
-            test: /\.(html)$/,
-            use: {
-               loader: 'html-loader',
-               options: {
-                  attrs: [':data-src']
-               }
-            }
          }
       ]
    },
    devServer: {
       contentBase: './dist',
       port: 5000,
-      hot: true
    },
-   plugins: [
-      new HtmlWebpackPlugin({
-         title: 'Shop',
-         template: './dist/index.html'
-      }),
-      new webpack.HotModuleReplacementPlugin()
-   ],
    devtool: 'source-map',
    mode: 'development'
 };
