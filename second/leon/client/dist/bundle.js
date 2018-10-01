@@ -107,6 +107,13 @@ var HTMLtoArray = exports.HTMLtoArray = function HTMLtoArray(obj) {
     return arr;
 };
 
+var getInputValue = exports.getInputValue = function getInputValue() {
+    return document.getElementById("loginInput").value;
+};
+var getContainer = exports.getContainer = function getContainer() {
+    return document.getElementById("itemContainer");
+};
+
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -235,9 +242,6 @@ var _utils = __webpack_require__(0);
 
 var _listeners = __webpack_require__(2);
 
-var itemContainer = document.getElementById("itemContainer");
-var loginInput = document.getElementById("loginInput");
-
 var logUser = function logUser() {
 
     var myHeaders = new Headers({
@@ -248,7 +252,7 @@ var logUser = function logUser() {
     var myInit = {
         method: 'POST',
         headers: myHeaders,
-        body: (0, _utils.myJSONstringify)({ login: loginInput.value })
+        body: (0, _utils.myJSONstringify)({ login: (0, _utils.getInputValue)() })
     };
 
     (0, _utils.fetchServer)("/login", myInit).then(function (res) {
@@ -300,7 +304,7 @@ var deleteUsers = function deleteUsers() {
 };
 
 (0, _getContents.fetchItems)().then(function (cards) {
-    (0, _getContents.addCards)(cards, itemContainer);
+    (0, _getContents.addCards)(cards, (0, _utils.getContainer)());
     (0, _listeners.attachListeners)({ logUser: logUser, getUsers: getUsers, deleteUsers: deleteUsers, buyItem: _transactions.buyItem });
 });
 

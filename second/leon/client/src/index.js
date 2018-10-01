@@ -1,10 +1,7 @@
 import { fetchItems, addCards } from "./getContents";
 import { buyItem } from "./transactions";
-import { showHint, fetchServer, myJSONstringify } from "./utils";
+import { showHint, fetchServer, myJSONstringify, getInputValue, getContainer} from "./utils";
 import { attachListeners } from "./listeners";
-
-const itemContainer = document.getElementById("itemContainer");
-const loginInput = document.getElementById("loginInput");
 
 const logUser = () => {
 
@@ -16,7 +13,7 @@ const logUser = () => {
     const myInit = {
         method: 'POST',
         headers: myHeaders,
-        body: myJSONstringify({ login: loginInput.value }),
+        body: myJSONstringify({ login: getInputValue()}),
     };
 
     fetchServer("/login", myInit)
@@ -70,7 +67,7 @@ const deleteUsers = () => {
 
 fetchItems()
     .then(cards => {
-        addCards(cards, itemContainer);
+        addCards(cards, getContainer());
         attachListeners({logUser, getUsers, deleteUsers, buyItem});
     });
 

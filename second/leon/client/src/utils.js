@@ -28,3 +28,6 @@ export const HTMLtoArray = (obj) => {
     }
     return arr;
 }
+
+export const getInputValue = () => document.getElementById("loginInput").value;
+export const getContainer = () => document.getElementById("itemContainer");
