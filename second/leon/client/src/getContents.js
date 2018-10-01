@@ -1,4 +1,6 @@
-const fetchItems = () => {
+import {fetchServer} from "./utils";
+
+export const fetchItems = () => {
     const myHeaders = new Headers({
         //'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -16,7 +18,7 @@ const fetchItems = () => {
         .catch(() => console.log("cannot Json()"));
 };
 
-const addCards = (cards, container) => {
+export const addCards = (cards, container) => {
     cards.map((card) => {
         container.innerHTML += getCardHtml(card);
     });
@@ -24,7 +26,7 @@ const addCards = (cards, container) => {
 
 const getCardHtml = (obj) => {
     return `
-    <div class="card" onclick="buyItem(${obj.id})" style="background-image: url(${obj.pic}">
+    <div class="card" name="${obj.id}" style="background-image: url(${obj.pic}">
         <div class="cardBlock">
             <div class="itemName"><b>${obj.name}</b> <ins>${obj.price}$</ins></div>
             <div class="itemDesc">${obj.desc}</div>

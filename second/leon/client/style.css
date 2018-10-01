@@ -5,8 +5,6 @@ body {
 header {
     width: auto;
     height: 50px;
-    /* border: 2px;
-    border-style: solid; */
     background-color: rgb(144, 195, 240);
 }
 
@@ -117,7 +115,7 @@ main {
     border-bottom-right-radius: inherit;
 }
 
-.popup {
+#popup {
     position: fixed;
     display: none;
     right: 10px;

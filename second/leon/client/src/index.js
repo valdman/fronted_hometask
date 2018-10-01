@@ -1,13 +1,10 @@
+import { fetchItems, addCards } from "./getContents";
+import { buyItem } from "./transactions";
+import { showHint, fetchServer, myJSONstringify } from "./utils";
+import { attachListeners } from "./listeners";
 
 const itemContainer = document.getElementById("itemContainer");
-const serverLink = "http://localhost:3001";
 const loginInput = document.getElementById("loginInput");
-const popup = document.getElementsByClassName("popup")[0];
-
-fetchItems()
-    .then(cards => {
-        addCards(cards, itemContainer);
-    })
 
 const logUser = () => {
 
@@ -19,8 +16,7 @@ const logUser = () => {
     const myInit = {
         method: 'POST',
         headers: myHeaders,
-        //credentials: "omit",
-        body: JSON.stringify({ login: loginInput.value }),
+        body: myJSONstringify({ login: loginInput.value }),
     };
 
     fetchServer("/login", myInit)
@@ -29,12 +25,11 @@ const logUser = () => {
             showHint(res.status)
             document.cookie = `token=${res.token};expires=${60 * 10}`;
         })
-        .catch((err) => conole.log(err));
+        .catch((err) => console.log(err));
 };
 
 const getUsers = () => {
     const myHeaders = new Headers({
-        //'Content-Type': 'application/json',
         'Accept': 'application/json',
     });
 
@@ -54,14 +49,12 @@ const getUsers = () => {
 
 const deleteUsers = () => {
     const myHeaders = new Headers({
-        //'Content-Type': 'application/json',
         'Accept': 'text/plain',
     });
 
     const myInit = {
         method: 'DELETE',
         headers: myHeaders,
-        //credentials: "include",
     };
 
     fetchServer("/users", myInit)
@@ -74,3 +67,10 @@ const deleteUsers = () => {
             showHint("Ошибка");
         });
 };
+
+fetchItems()
+    .then(cards => {
+        addCards(cards, itemContainer);
+        attachListeners({logUser, getUsers, deleteUsers, buyItem});
+    });
+

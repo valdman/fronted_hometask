@@ -1,4 +1,6 @@
-const buyItem = (id) => {
+import {fetchServer, showHint, myJSONstringify} from "./utils";
+
+export const buyItem = (id) => {
     const myHeaders = new Headers({
         'Content-Type': 'application/json',
         'Accept': 'text/plain',
@@ -8,7 +10,7 @@ const buyItem = (id) => {
         method: 'POST',
         headers: myHeaders,
         credentials: "include",
-        body: JSON.stringify({
+        body: myJSONstringify({
             itemId: id
         }),
     };
