@@ -20,9 +20,14 @@ function CreateItem({id,name,price,desc,pic}){
         <img class="product" src="${pic}">
         <div class="price">${price} $</div>
         <div class="description"><p>${desc}</p></div>
-        <input type="button" onclick="BuyItem()" value="BUY" class="byProduct">
-    
+        <input type="button"  value="BUY" class="byProduct">
+        </div>
     `;
+    
+}
+function AddEvents(arrayOfElements){
+    for (a of arrayOfElements) 
+    a.addEventListener("click",BuyItem);
 }
 function AppendItems(items){
     let cont = document.getElementById("items");
@@ -35,22 +40,29 @@ function login(){
     const log = document.getElementById("login").value;
     return fetch(loginPath,{
         method: "POST",
-        credentials: 'include',
+        
         body: {
             login: log
         }
     })
-    .then(x => {if((x.status == "200") && (x.ok == true)) alert("loged");})
+    .then(x => x.json())
+    .then(x => {document.cookie =`token=${x.token}`; return x})
+    .then(x => alert(x.status));
+    
 }
 function BuyItem(){
-
+    console.log(document.cookie);
     return fetch(buyPath,{
         method: "POST",
         credentials: 'include',
-        body: {
-            itemId: this.id
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }),
+        body: JSON.stringify({
+            "itemId": this.parentNode.id,
             
-        }
+        })
     })
     .then(x => {if((x.status == "200") && (x.ok == true)) alert("Buyed");});
     
@@ -60,5 +72,6 @@ function BuyItem(){
 GetUsers(usersPath);
 GetItems(itemsPath)
 .then(x => x.map(element => CreateItem(element)))
-.then(x => AppendItems(x));
+.then(x => AppendItems(x))
+.then(x => AddEvents(document.getElementsByClassName("byProduct")));
 
