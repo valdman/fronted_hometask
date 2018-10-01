@@ -1,5 +1,5 @@
 function BuyItem(idOfItem) {
-    fetch("http://localhost:3001/login", {
+    fetch("http://localhost:3001/buy", {
         method: "POST",
         credentials: 'include',
         headers: new Headers({
