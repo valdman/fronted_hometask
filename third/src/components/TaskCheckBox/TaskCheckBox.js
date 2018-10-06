@@ -6,13 +6,17 @@ class TaskCheckbox extends Component
     constructor(props)
     {
         super(props);
-        this.state = false;
+        //this.onchange = props.onchange;
         onchange = props.onchange;
     }
 
+    // state = {
+    //     checked: false
+    // }
+
     render()
     {
-        return <input type="checkbox" className="TaskCheckbox" />
+        return <input type="checkbox" className={`TaskCheckbox ${this.props.checked ? "checked": ""}`} />
     }
 }
 

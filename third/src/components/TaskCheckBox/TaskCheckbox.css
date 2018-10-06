@@ -1,2 +1,6 @@
 .TaskCheckbox {
+    background-color: greenyellow;
+}
+.TaskCheckbox.checked {
+    background-color: coral;
 }
