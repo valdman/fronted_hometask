@@ -1,16 +1,19 @@
 import React from "react";
 
-import TaskCheckBox from "../../components/TaskCheckBox/TaskCheckBox";
-import TaskText from "../../components/TaskText/Tasktext"
+import TaskCheckbox from "../../components/TaskCheckbox/TaskCheckbox";
+import TaskText from "../../components/TaskText/TaskText"
 
-const Task = (task) => <div>
-    <TaskCheckBox>
+const Task = ({task}) => <div className="Task" key={task}>
+    <TaskCheckbox onchange = {ChangeTaskState.bind(this)} key={}>
 
-    </TaskCheckBox>
-    <TaskText>
+    </TaskCheckbox>
+    <TaskText task={task} >
 
     </TaskText>
 </div>
 ;
 
+const ChangeTaskState = () => {
+    console.log("Clicked");
+}
 export default Task;

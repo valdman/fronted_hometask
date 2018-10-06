@@ -1,17 +1,19 @@
 import React, {Component} from "react";
+import "./TaskCheckbox.css"
 
-class TaskCheckBox extends Component
+class TaskCheckbox extends Component
 {
     constructor(props)
     {
         super(props);
         this.state = false;
+        onchange = props.onchange;
     }
 
     render()
     {
-        return <div>Hui</div>
+        return <input type="checkbox" className="TaskCheckbox" />
     }
 }
 
-export default TaskCheckBox;
+export default TaskCheckbox;

@@ -1,16 +1,19 @@
 import React, {Component} from "react";
 
+import "./TaskText.css"
+
 class TaskText extends Component
 {
     constructor(props)
     {
         super(props);
-        this.state = false;
+        this.text = props.task;
+        console.log(props);
     }
 
     render()
     {
-        return <input type="checkBox"></input>
+        return <div className="TaskText">{this.text}</div>
     }
 
     
