@@ -23,7 +23,7 @@
     padding: 2px 5px;
 }
 
-.SuggestionsCountainer > :nth-child(even) {
+.SuggestionsCountainer > :nth-child(even):not(.selected) {
     background-color: rgba(0, 0, 0, 0.034);
 }
 

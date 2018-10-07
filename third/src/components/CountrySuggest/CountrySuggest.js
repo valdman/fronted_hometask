@@ -25,7 +25,7 @@ class CountrySuggest extends Component {
     onKeyDown(event) {
         var currentVal = event.target.value;
 
-        if(currentVal === "") {this.matched = []; this.forceUpdate() ;return;}
+        if (currentVal === "") { this.matched = []; this.forceUpdate(); return; }
 
         var regexp = new RegExp(`${currentVal}`, "i");
         this.matched = Codes.filter((country) => regexp.test(country[1]));
@@ -39,7 +39,7 @@ class CountrySuggest extends Component {
     }
 
     onCountryClick(country) {
-        this.setState({country: country})
+        this.setState({ country: country })
     }
 
     render() {
@@ -51,6 +51,7 @@ class CountrySuggest extends Component {
                     key={country[0]}
                     src={this.getSrc(country[0])}
                     onClick={this.onCountryClick.bind(this, country[1])}
+                    selected={this.state.country === country[1]}
                 />)}
             </div>
         </div>

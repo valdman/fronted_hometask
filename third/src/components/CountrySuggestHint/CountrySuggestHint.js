@@ -13,9 +13,9 @@ class CountrySuggestHint extends Component {
 
     render() {
         //console.log("I am rendering " + this.props.country);
-        return <div className="CountrySuggestHint" onClick={this.props.onClick}>
+        return <div className={`CountrySuggestHint ${this.props.selected ? "selected" : ""}`} onClick={this.props.onClick}>
             <img alt="" src={this.src}></img>
-            <div>{`${this.country}`} </div>
+            <div>{`${this.country}`}</div>
         </div>
     }
 }
