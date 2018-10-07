@@ -18,24 +18,17 @@ class CountrySuggest extends Component {
    onInputChange = () => {
       let value = document.getElementById('country-input').value.trim();
 
-      if (value !== '') {
-         let suggesting = countries.reduce((acc, country) => {
-            if (country.name.toLowerCase().indexOf(value.toLowerCase()) + 1)
-               acc.push(country)
+      let suggesting = value !== '' ? countries.reduce((acc, country) => {
+         if (country.name.toLowerCase().indexOf(value.toLowerCase()) + 1)
+            acc.push(country)
 
-            return acc;
-         }, [])
+         return acc;
+      }, []) : [];
 
-         this.setState((prevState) => ({
-            suggesting: suggesting,
-            selected: prevState.selected,
-         }))
-      } else {
-         this.setState((prevState) => ({
-            suggesting: [],
-            selected: prevState.selected,
-         }))
-      }
+      this.setState((prevState) => ({
+         suggesting: suggesting,
+         selected: prevState.selected,
+      }))
    }
 
    onCountryClick = (name) => {
