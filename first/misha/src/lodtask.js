@@ -9,6 +9,6 @@ export const lodtask = (link) => {
         .then(nodes => getAllPaths(link, nodes))
         .then(paths => createRequests(paths))
         .then(requests => Promise.all(requests))
-        .catch(err => err);
+        .catch(err => err.message);
 }
 

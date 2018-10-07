@@ -30,6 +30,7 @@ s.post("/login", (req, res) => {
 
 s.post("/buy", (req, res) => {  
     const token = req.cookies.token;
+    
     if(!token) {
         res.status(403).send("Token needed").end();
         return;

@@ -32,9 +32,16 @@ export function addButtonHandlers(buttons) {
    Array.from(buttons).map((button) => {
       button.addEventListener('click', () => {
          fetch('http://localhost:3001/buy', {
-            method: 'POST' 
+            method: 'POST',
+            credentials: "include",
+            headers: {
+               "content-type": "application/json",
+            },
+            body: JSON.stringify({
+               itemId: button.getAttribute('data-id')
+            })
          })
-         .then(res => {console.log(res)})
+         .then((res) => console.log(res.status))
       })
    })
 }
