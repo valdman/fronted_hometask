@@ -1,10 +1,10 @@
 import React from "react";
-import Task from "../Task/Task";
+import Task from "../../components/Task/Task";
 
 import "./ToDoList.css";
 
 const ToDoList = ({tasks}) => <div className="ToDoList">
-    {tasks.map(task => <Task task={task} key={task}></Task>)}
+    {tasks.map((task, i) => <Task task={task} key={"Task" + i}></Task>)}
 </div>;
 
 export default ToDoList;
