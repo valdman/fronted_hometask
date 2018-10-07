@@ -1,0 +1,36 @@
+.country-suggest {
+   position: relative;
+   width: 250px;
+}
+
+.country-suggest #country-input {
+   width: 100%;
+   height: 35px;
+
+   border: none;
+   outline: none;
+
+   padding: 5px 10px;
+   margin: 0;
+
+   font-size: 16px;
+   border-radius: 5px;
+   border-bottom: 2px solid #333;
+   box-sizing: border-box;
+}
+
+.country-suggest ul {
+   width: 100%;
+   max-height: 200px;
+   overflow-y: scroll;
+
+   margin: 0;
+   padding: 0;
+
+   position: absolute;
+   top: 100%;
+
+   border-radius: 5px;
+   border-bottom: 2px solid #333;
+   background-color: #fff;
+}
