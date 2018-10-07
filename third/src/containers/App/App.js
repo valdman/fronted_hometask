@@ -1,5 +1,6 @@
-import React from "react";
+import React,{Fragment} from "react";
 import ToDoList from "../ToDoList/ToDoList";
+import CountrySuggest from "../../components/CountrySuggest/CountrySuggest"
 
 const tasks = [
     "Call your mom",
@@ -7,5 +8,9 @@ const tasks = [
     "Have dinner with your mom"
 ]
 
-const App = () => <ToDoList tasks={tasks}></ToDoList>
+const App = () => <Fragment>
+    <ToDoList tasks={tasks}></ToDoList>
+    <CountrySuggest></CountrySuggest>
+    </Fragment>;
+
 export default App;

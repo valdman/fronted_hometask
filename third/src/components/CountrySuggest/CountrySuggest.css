@@ -1,0 +1,41 @@
+.CountrySuggest {
+    width: 150px;
+
+    padding: 4px;
+
+    
+
+    /* Debug Borders */
+    /* border-style: solid;
+    border-width: 2px;*/
+
+
+    border-radius: 5px; 
+    box-shadow: 0 3px 6px 2px rgba(0, 0, 0, 0.287);
+    /* No height animation ((( */
+}
+
+.SuggestionsCountainer {
+    
+    overflow: scroll;
+    height: fit-content;
+    max-height: 150px;
+    padding: 2px 5px;
+}
+
+.SuggestionsCountainer > :nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.034);
+}
+
+.CountySuggestInput {
+    position: relative;
+    display: block;
+    width:  calc(100% - 8px);
+    margin: 2px auto;
+    /* width: fit-content; */
+
+    border-style: solid;
+    border-color: darkgrey;
+    border-radius: 3px;
+    border-width: 1px;
+}
