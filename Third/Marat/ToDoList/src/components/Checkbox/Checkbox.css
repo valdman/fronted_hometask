@@ -1,0 +1,11 @@
+.Checkbox{
+    top: 14px;
+    
+    height: 20px;
+    width: 20px;
+   
+    margin-left: 20px;
+    outline: none;
+    position: relative;
+    z-index: 1000;
+}
