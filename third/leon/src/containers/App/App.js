@@ -3,9 +3,9 @@ import ToDoList from "../ToDoList/ToDoList";
 import CountrySuggest from "../../components/CountrySuggest/CountrySuggest"
 
 const tasks = [
-    "Call your mom",
-    "Go for a walk with your mom",
-    "Have dinner with your mom"
+    "aaaaaaaaaaaaaaa",
+    "bbbbbbbbbbbbbbb",
+    "ccccccccccccccc"
 ]
 
 const App = () => <Fragment>

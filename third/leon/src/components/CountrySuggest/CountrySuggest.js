@@ -6,8 +6,6 @@ import "./CountrySuggest.css";
 
 import Codes from "./CountryCodes";
 
-//console.log(Countries);
-
 class CountrySuggest extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +18,7 @@ class CountrySuggest extends Component {
 
     state = {
         country: null,
+        current: ""
     }
 
     onKeyDown(event) {
@@ -32,6 +31,13 @@ class CountrySuggest extends Component {
 
         console.log(currentVal);
         this.forceUpdate();
+
+        //it does not work
+        // this.setState({ current: event.target.value }, () => {
+        //     if (this.state.current === "") { this.matched = []; return; }
+        //     var regexp = new RegExp(`${this.state.current }`, "i");
+        //     this.matched = Codes.filter((country) => regexp.test(country[1]));
+        // })
     }
 
     getSrc(countryCode) {
