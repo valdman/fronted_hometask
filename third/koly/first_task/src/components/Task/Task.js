@@ -18,8 +18,8 @@ class Task extends Component{
     }
     render(){
         return <div className="Task">
-        <Chekbox done={this.state} onCheckboxChanged={this.onCheckboxChanged} />
-        <Text text = {this.props.text} done={this.state}/>
+        <Chekbox done={this.state.done} onCheckboxChanged={this.onCheckboxChanged} />
+        <Text text = {this.props.text} done={this.state.done}/>
         </div>;
     }
 }

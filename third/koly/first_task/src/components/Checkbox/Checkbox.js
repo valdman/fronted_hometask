@@ -7,7 +7,6 @@ import "./Checkbox.css"
 class Chekbox extends Component{
     constructor(props){
         super(props);
-        this.state = {done: props.done}
         this.onCheckboxChanged =props.onCheckboxChanged;
     };
 
