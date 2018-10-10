@@ -14,12 +14,13 @@ class ImputControl extends Component{
         this.setState(prevState => ({value: value}))
     }
     ClickHandler(country){
-        //this.setState(prevState => ({value: country}))   
+        this.setState(prevState => ({value: country}))
+        console.log(country); 
     }
 
     render(){
-        return <div className = "main"><Input value={this.state.value} func={this.ChangeHundler}/>
-        <CountrySuggest value={this.state.value} func={() => this.ClickHandler()}/></div>
+        return <div className = "main"><Input value={this.state.value} func={(value) => this.ChangeHundler(value)}/>
+        <CountrySuggest value={this.state.value} func={(country) => this.ClickHandler(country)}/></div>
     }
 }
 
