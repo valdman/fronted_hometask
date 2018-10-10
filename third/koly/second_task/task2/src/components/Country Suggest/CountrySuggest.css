@@ -1,3 +1,13 @@
 li {
-    list-style-type: none; /* Убираем маркеры */
+    list-style-type: none;
+    font-size: 20px;
    }
+ul {
+    max-height: 140px; 
+    width: 200px; 
+    overflow: hidden; 
+    overflow-y: scroll;
+}
+img {
+    width: 40px;
+}
