@@ -3,9 +3,11 @@ import NavContainer from "../NavContainer/NavContainer";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import Cart from "../../components/Cart/Cart";
 
+import "./HeaderContainer.css";
+
 const HeaderContainer = () => {
     return (
-        <div>
+        <div className="HeaderContainer">
             <NavContainer></NavContainer>
             <Cart></Cart>
             <LoginForm></LoginForm>

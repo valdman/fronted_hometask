@@ -1,29 +1,34 @@
 import React, { Component } from "react";
 import ItemCard from "../../components/ItemCard/ItemCard";
 
+import "./ItemContainer.css";
+
 class ItemContainer extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            items: ["d"]
+            items: []
         };
-        //this.items = [];
+
         fetchItems()
-        .then((res) => {
-            console.log(res);
-            //this.items = res;
-            this.setState({items: res});
+            .then((res) => {
+                console.log(res);
+                this.setState({ items: res });
             });
     }
 
-
     render() {
         return (
-
-            // <ItemCard>fffff</ItemCard>
-            <div>
-            {this.state.items[0]}1
-            {this.items.length}2
+            <div className="ItemContainer">
+                {this.state.items.map(item => <ItemCard
+                    id={item.id}
+                    desc={item.desc}
+                    name={item.name}
+                    price={item.price}
+                    key={item.id}
+                    onclick={buyItem.bind(this, item.id)}
+                ></ItemCard>)}
             </div>
 
         );
@@ -48,6 +53,31 @@ const fetchItems = () => {
         .catch(() => console.log("fetch error"))
         .then(res => res.json())
         .catch(() => console.log("cannot Json()"));
+};
+
+const buyItem = (id) => {
+    const myHeaders = new Headers({
+        'Content-Type': 'application/json',
+        'Accept': 'text/plain',
+    });
+
+    const myInit = {
+        method: 'POST',
+        headers: myHeaders,
+        credentials: "include",
+        body: JSON.stringify({
+            itemId: id
+        }),
+    };
+
+    fetchServer("/buy", myInit)
+        .catch(() => console.log("gotcha"))
+        .then(res => res)
+        .then(res => {
+            //showHint(res.ok ? "Покуплено" : "Логин?");
+            console.log(res.body);
+        })
+        .catch((err) => console.log("err"));
 };
 
 const fetchServer = (path, params) => {
