@@ -9,7 +9,7 @@ const HeaderContainer = (props) => {
     return (
         <div className="HeaderContainer">
             <NavContainer></NavContainer>
-            <LoginForm fetchServer={props.fetchServer}></LoginForm>
+            <LoginForm></LoginForm>
         </div>
     );
 }

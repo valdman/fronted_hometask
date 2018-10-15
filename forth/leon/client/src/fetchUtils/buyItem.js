@@ -20,10 +20,6 @@ const buyItem = (id) => {
     fetchServer("/buy", myInit)
         .catch(() => console.log("gotcha"))
         .then(res => res)
-        .then(res => {
-            //showHint(res.ok ? "Покуплено" : "Логин?");
-            //console.log(res.body);
-        })
         .catch((err) => console.log("err"));
 };
 

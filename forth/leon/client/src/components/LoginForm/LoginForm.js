@@ -25,7 +25,6 @@ class LoginForm extends Component {
     this.setState({ value: event.target.value })
   }
 
-
   render() {
     return (
       <form onSubmit={this.handleSubmit} action="" >

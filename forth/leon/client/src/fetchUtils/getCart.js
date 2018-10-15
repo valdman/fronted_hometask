@@ -16,8 +16,6 @@ const getCart = () => {
       .catch(() => console.log("gotcha"))
       .then(res => res.json())
       .then(res => {
-        //showHint(res.ok ? "Покуплено" : "Логин?");
-        //console.log(res);
         return res;
       })
       .catch((err) => console.log(err));

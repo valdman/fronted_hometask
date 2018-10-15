@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ItemCard from "../../components/ItemCard/ItemCard";
 import Cart from "../../components/Cart/Cart";
 
-
 import fetchItems from "../../fetchUtils/fetchItems";
 import buyItem from "../../fetchUtils/buyItem";
 
@@ -17,8 +16,6 @@ class ItemContainer extends Component {
         };
 
         this.handlePurchase = this.handlePurchase.bind(this);
-
-
     }
 
     componentDidMount() {

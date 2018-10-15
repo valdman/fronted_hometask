@@ -5,7 +5,7 @@ import "./NavButton.css";
 class NavButton extends Component {
     render() {
       return (
-        <div className="NavButton">button</div>
+        <div className="NavButton">{this.props.children}</div>
       );
     }
   }

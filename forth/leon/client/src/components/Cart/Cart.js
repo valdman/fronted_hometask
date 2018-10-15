@@ -18,8 +18,6 @@ class Cart extends Component {
 
   handleClick = () => {
     getCart().then((res) => {
-      //console.log(res);
-
       this.setState({ inCart: parseCart(res) })
     })
   }
@@ -28,7 +26,6 @@ class Cart extends Component {
     const allItems = this.props.items;
     const propriateItems = allItems.filter(item => item.id in this.state.inCart);
     const smallItems = propriateItems.map(item => ({ name: item.name, price: item.price, amount: this.state.inCart[item.id] }));
-    console.log(smallItems);
 
     return (
       <Fragment>
