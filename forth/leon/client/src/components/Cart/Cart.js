@@ -1,42 +1,44 @@
-import React, {Component} from "react";
+import React, { Component, Fragment } from "react";
+import getCart from "../../fetchUtils/getCart";
+import parseCart from "../../fetchUtils/parseCart";
 
 import "./Cart.css";
 
 class Cart extends Component {
-    render() {
-      return (
-        <div>Cart</div>
-      );
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      shown: false,
+      inCart: {}
     }
+
+    this.handleClick = this.handleClick.bind(this);
   }
-  
-  export default Cart;
 
-  const getCart = () => {
-    const myHeaders = new Headers({
-        'Content-Type': 'application/json',
-        'Accept': 'text/plain',
-    });
+  handleClick = () => {
+    getCart().then((res) => {
+      //console.log(res);
 
-    const myInit = {
-        method: 'POST',
-        headers: myHeaders,
-        credentials: "include",
-        // body: JSON.stringify({
-        //     itemId: id
-        // }),
-    };
+      this.setState({ inCart: parseCart(res) })
+    })
+  }
 
-    fetchServer("/buy", myInit)
-        .catch(() => console.log("gotcha"))
-        .then(res => res)
-        .then(res => {
-            //showHint(res.ok ? "Покуплено" : "Логин?");
+  render() {
+    const allItems = this.props.items;
+    const propriateItems = allItems.filter(item => item.id in this.state.inCart);
+    const smallItems = propriateItems.map(item => ({ name: item.name, price: item.price, amount: this.state.inCart[item.id] }));
+    console.log(smallItems);
 
-        })
-        .catch((err) => console.log("err"));
-};
-
-const fetchServer = (path, params) => {
-  return fetch("http://localhost:3001" + path, params);
+    return (
+      <Fragment>
+        <div onClick={this.handleClick} className="Cart">Cart</div>
+        <div className="CartWrapper" >
+          {smallItems.map(item => <div key={"item" + item.id}>{item.name} x{item.amount} {item.price} </div>)}
+        </div>
+      </Fragment>
+    );
+  }
 }
+
+export default Cart;

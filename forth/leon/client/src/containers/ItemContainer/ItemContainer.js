@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import ItemCard from "../../components/ItemCard/ItemCard";
+import Cart from "../../components/Cart/Cart";
+
+
+import fetchItems from "../../fetchUtils/fetchItems";
+import buyItem from "../../fetchUtils/buyItem";
 
 import "./ItemContainer.css";
 
@@ -11,6 +16,12 @@ class ItemContainer extends Component {
             items: []
         };
 
+        this.handlePurchase = this.handlePurchase.bind(this);
+
+
+    }
+
+    componentDidMount() {
         fetchItems()
             .then((res) => {
                 console.log(res);
@@ -18,16 +29,22 @@ class ItemContainer extends Component {
             });
     }
 
+
+    handlePurchase(id) {
+        buyItem(id);
+    };
+
     render() {
         return (
             <div className="ItemContainer">
+                <Cart items={this.state.items}></Cart>
                 {this.state.items.map(item => <ItemCard
                     id={item.id}
                     desc={item.desc}
                     name={item.name}
                     price={item.price}
                     key={item.id}
-                    onclick={buyItem.bind(this, item.id)}
+                    onclick={this.handlePurchase.bind(this, item.id)}
                 ></ItemCard>)}
             </div>
 
@@ -36,50 +53,3 @@ class ItemContainer extends Component {
 }
 
 export default ItemContainer;
-
-const fetchItems = () => {
-    const myHeaders = new Headers({
-        //'Content-Type': 'application/json',
-        'Accept': 'application/json',
-    });
-
-    const myInit = {
-        method: 'GET',
-        headers: myHeaders,
-        //credentials: "omit",
-    };
-
-    return fetchServer("/items", myInit)
-        .catch(() => console.log("fetch error"))
-        .then(res => res.json())
-        .catch(() => console.log("cannot Json()"));
-};
-
-const buyItem = (id) => {
-    const myHeaders = new Headers({
-        'Content-Type': 'application/json',
-        'Accept': 'text/plain',
-    });
-
-    const myInit = {
-        method: 'POST',
-        headers: myHeaders,
-        credentials: "include",
-        body: JSON.stringify({
-            itemId: id
-        }),
-    };
-
-    fetchServer("/buy", myInit)
-        .catch(() => console.log("gotcha"))
-        .then(res => res)
-        .then(res => {
-            //showHint(res.ok ? "Покуплено" : "Логин?");
-            console.log(res.body);
-        })
-        .catch((err) => console.log("err"));
-};
-
-const fetchServer = (path, params) => {
-    return fetch("http://localhost:3001" + path, params);
-}

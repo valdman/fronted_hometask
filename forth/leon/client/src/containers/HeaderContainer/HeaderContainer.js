@@ -1,16 +1,15 @@
 import React from "react";
 import NavContainer from "../NavContainer/NavContainer";
 import LoginForm from "../../components/LoginForm/LoginForm";
-import Cart from "../../components/Cart/Cart";
+
 
 import "./HeaderContainer.css";
 
-const HeaderContainer = () => {
+const HeaderContainer = (props) => {
     return (
         <div className="HeaderContainer">
             <NavContainer></NavContainer>
-            <Cart></Cart>
-            <LoginForm></LoginForm>
+            <LoginForm fetchServer={props.fetchServer}></LoginForm>
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import loginUser from "../../fetchUtils/loginUser";
 
 import "./LoginForm.css";
 
@@ -16,29 +17,12 @@ class LoginForm extends Component {
   }
 
   handleSubmit(event) {
-    const myHeaders = new Headers({
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    });
-
-    const myInit = {
-      method: 'POST',
-      headers: myHeaders,
-      body: JSON.stringify({ login: this.state.value }),
-    };
-
-    fetchServer("/login", myInit)
-      .then(res => res.json())
-      .then(res => {
-        //showHint(res.status)
-        console.log(res);
-        document.cookie = `token=${res.token};expires=${60 * 10}`;
-      })
-      .catch((err) => console.log(err));
+    event.preventDefault();
+    loginUser(this.state.value);
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value})
+    this.setState({ value: event.target.value })
   }
 
 
@@ -56,28 +40,3 @@ class LoginForm extends Component {
 
 export default LoginForm;
 
-// const logUser = () => {
-
-//   const myHeaders = new Headers({
-//       'Content-Type': 'application/json',
-//       'Accept': 'application/json',
-//   });
-
-//   const myInit = {
-//       method: 'POST',
-//       headers: myHeaders,
-//       body: JSON.stringify({ login: loginInput.value }),
-//   };
-
-//   fetchServer("/login", myInit)
-//       .then(res => res.json())
-//       .then(res => {
-//           showHint(res.status)
-//           document.cookie = `token=${res.token};expires=${60 * 10}`;
-//       })
-//       .catch((err) => conole.log(err));
-// };
-
-const fetchServer = (path, params) => {
-  return fetch("http://localhost:3001" + path, params);
-}
