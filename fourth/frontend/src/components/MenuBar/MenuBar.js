@@ -5,7 +5,7 @@ import LoginForm from '../LoginFrom/LoginForm';
 
 class MenuBar extends Component {
    render() {
-      const {showCart, showHome, cart, login, loginned} = this.props;
+      const { changePage, login, showCart} = this.props;
 
       return (
          <div className="menu-bar">
@@ -15,15 +15,15 @@ class MenuBar extends Component {
                      Shop
                   </li>
                   <li className="menu-btn"
-                     onClick={() => {showHome()}}
+                     onClick={() => {changePage("home")}}
                   >
                      Home
                   </li>
                   <li className="menu-btn"
-                      onClick={() => {showCart()}}
-                      style={{display: loginned ? "inline-block" : "none"}}
+                      onClick={() => {changePage("cart")}}
+                      style={{display: showCart ? "inline-block" : "none"}}
                   >
-                     Cart ({cart})
+                     Cart
                   </li>
                </ul>
                <LoginForm login={login}/>

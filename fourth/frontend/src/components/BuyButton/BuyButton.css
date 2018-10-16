@@ -1,9 +1,9 @@
-.add-btn {
+.buy-btn {
    width: 100%;
    padding: 10px;
    border: none;
    outline: none;
-   /* background-color: #3498db; */
+   background-color: #3498db;
    color: #ffffff;
    font-size: 14px;
    text-transform: uppercase;

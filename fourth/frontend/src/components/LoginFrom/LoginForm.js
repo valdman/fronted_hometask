@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import './LoginForm.css';
 
+import {makeLoginRequest} from '../../requests';
+
 class LoginForm extends Component {
    constructor(props) {
       super(props);
@@ -30,25 +32,17 @@ class LoginForm extends Component {
    }
 
    sendLoginQuery = (value) => {
-      fetch('http://localhost:3001/login', {
-         method: 'POST',
-         credentials: "include",
-         headers: {
-            "content-type": "application/json"
-         },
-         body: JSON.stringify({
-            login: value
-         })
-      })
+      makeLoginRequest()
          .then(res => res.json())
-         .then(resData => {
-            switch (resData.status) {
+         .then(resData => resData.status)
+         .then(status => {
+            switch (status) {
                case "created":
                   alert("You are successfully registered");
                   break;
                case "loginned in":
                   alert("Loginned in");
-                  this.setState((prevState) => ({
+                  this.setState(() => ({
                      showForm: false
                   }));
                   this.props.login();

@@ -5,86 +5,114 @@ import MenuBar from '../MenuBar/MenuBar';
 import Item from '../Item/Item';
 import ItemWrapper from '../ItemWrapper/ItemWrapper';
 
+import { makeBuyRequest, makeItemsRequest, makeCartRequest } from '../../requests';
+import generateGuid from '../../guid';
+
 class App extends Component {
    constructor(props) {
       super(props);
 
       this.state = {
          items: [],
-         inCart: [],
-         showCart: false,
+         cart: [],
+         page: "home",
          loginned: false
       }
    }
 
    componentDidMount() {
-      fetch('http://localhost:3001/items')
+      this.getAllItems();
+   }
+
+   buy = (id) => {
+      makeBuyRequest(id)
+         .then(res => res.status)
+         .then(status => {
+            if (status === 200)
+               alert(`item ${id} purchased`)
+         })
+   }
+
+   getAllItems = () => {
+      makeItemsRequest()
          .then(res => res.json())
          .then(data => {
             this.setState((prevState) => ({
-               ...prevState,
                items: data
             }))
          })
    }
 
-   addInCart = (id) => {
-      const item = this.state.items.find(item => item.id === id);
-
-      this.setState((prevState) => {
-         return {
-            ...prevState,
-            inCart: [...prevState.inCart, item]
-         }
-      })
+   getCart = () => {
+      makeCartRequest()
+         .then(res => res.json())
+         .then(data =>
+            data.reduce((acc, id) => {
+               return [...acc, this.state.items.find(item => item.id === id)];
+            }, [])
+         )
+         .then(items => {
+            this.setState(() => ({
+               cart: items
+            }))
+         })
    }
 
-   showCart = () => {
-      this.setState((prevState) => ({
-         ...prevState,
-         showCart: true
-      }))
-   }
+   changePage = (page) => {
+      switch (page) {
+         case "cart":
+            this.getCart();
+            break;
+         default:
+            this.getAllItems();
+            break;
+      }
 
-   showHome = () => {
-      this.setState((prevState) => ({
-         ...prevState,
-         showCart: false
+      this.setState(() => ({
+         page: page
       }))
    }
 
    login = () => {
-      this.setState((prevState) => ({
-         ...prevState,
+      this.setState(() => ({
          loginned: true
       }))
    }
 
    render() {
-      const { showCart, items, inCart, loginned } = this.state;
-      const products = showCart ? inCart : items;
+      const getProducts = (page) => {
+         switch (page) {
+            case "cart":
+               return cart;
+            default:
+               return items;
+         }
+      }
+
+      const { page, items, cart, loginned } = this.state;
+      const products = getProducts(page);
 
       return (
          <div className="App">
-            <MenuBar showCart={this.showCart}
-               showHome={this.showHome}
-               cart={inCart.length}
+            <MenuBar
                login={this.login}
-               loginned={loginned}
+               changePage={this.changePage}
+               showCart={loginned}
             />
             <div className="container">
                <ItemWrapper>
                   {products.map(product => {
                      const { id, pic, name, desc, price } = product;
 
-                     return <Item id={id}
-                        loginned={loginned}
+                     return <Item
+                        key={generateGuid()}
+                        id={id}
                         pic={pic}
                         name={name}
                         description={desc}
                         price={price}
-                        key={id}
-                        addInCart={this.addInCart}
+                        showButton={loginned}
+                        buy={this.buy}
                      />
                   }
                   )}

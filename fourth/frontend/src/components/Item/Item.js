@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import ItemBtn from '../AddBtn/AddBtn';
-import BuyBtn from '../BuyBtn/BuyBtn';
+import BuyBtn from '../BuyButton/BuyButton';
 
 import './Item.css'
 
@@ -15,7 +14,7 @@ class Item extends Component {
    }
 
    render() {
-      const { id, pic, name, description, price, addInCart, loginned } = this.props;
+      const { id, pic, name, description, price, buy, showButton } = this.props;
 
       return (
          <div className="item">
@@ -28,9 +27,8 @@ class Item extends Component {
                <p>Price: {price}$</p>
             </div>
 
-            <div style={{display: loginned ? "block" : "none"}} className="btn-wrapper">
-               <BuyBtn text="Buy" id={id} />
-               <ItemBtn onClick={addInCart} id={id} />
+            <div style={{display: showButton ? "block" : "none"}} className="btn-wrapper">
+               <BuyBtn text="Buy" id={id} buy={buy}/>
             </div>
          </div>
       )
