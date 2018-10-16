@@ -12,13 +12,17 @@ class CountryComplete extends Component
         }
      }
 
-    inputChange = ()=>{
+    inputChange = (event)=>{
+        const newValue = event.target.value;
         let currentValue = document.getElementById('CountryInput').value.trim();
+        
 
     }
+
     render(){
         const {text} = this.props;
-
+        value = this.state.value
+        
         return <div className="country-input">
            
             <input id="CountryInput" 

@@ -1,0 +1,38 @@
+.Product{
+    display: flex;
+    justify-content: space-around !important;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    width: 250px;
+    height: 350px;
+    display: inline-block;
+    margin: 10px;
+
+    border: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: grey;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    padding: 10px;
+}
+h3{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.addItem{
+    background-color:rgb(42, 41, 99);
+    color:whitesmoke;
+    border-radius:5px;
+    width:auto;
+    height: auto;  
+    font-family: Comic Sans MS, Verdana, monospace; 
+}
+.addItem:hover{
+    cursor: pointer;
+}
