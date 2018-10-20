@@ -5,7 +5,7 @@ import "./ItemCard.css";
 class ItemCard extends Component {
   render() {
     return (
-      <div className="ItemCard" onClick={this.props.onclick}>
+      <div className="ItemCard" onClick={this.props.oncklick}>
         <span>{this.props.name}</span>
         <span>{this.props.desc}</span>
         <span>{this.props.price}</span>
@@ -13,5 +13,6 @@ class ItemCard extends Component {
     );
   }
 }
+
 
 export default ItemCard;

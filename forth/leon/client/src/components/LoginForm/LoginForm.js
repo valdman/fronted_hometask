@@ -1,7 +1,18 @@
 import React, { Component } from "react";
 import loginUser from "../../fetchUtils/loginUser";
+import { connect } from "react-redux";
+
+import { login, register } from "../../actions/actions";
 
 import "./LoginForm.css";
+
+const mapDispatchToProps = dispatch => ({
+  login: (e) => {
+    console.log(this);
+    e.preventDefault();
+    dispatch(login(this.state.value))
+  },
+});
 
 class LoginForm extends Component {
   constructor(props) {
@@ -11,7 +22,6 @@ class LoginForm extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      login: "",
       value: "",
     };
   }
@@ -27,7 +37,10 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} action="" >
+      <form
+        //onSubmit={this.handleSubmit}
+        onSubmit={this.props.login}
+        action="" >
         <label>Login:
           <input type="text" value={this.state.value} onChange={this.handleChange}></input>
         </label>
@@ -37,5 +50,5 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default connect(null, mapDispatchToProps)(LoginForm);
 
