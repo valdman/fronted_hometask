@@ -1,15 +1,20 @@
 import React from "react";
+import { connect } from "react-redux";
 
-import getUsers from "../../fetchUtils/getUsers";
-import deleteUsers from "../../fetchUtils/deleteUsers";
+import { getUsersAction, deleteUsersAction } from "../../actions/actions";
 
-const FooterContainer = () => {
+const mapDispatchToProps = dispatch => ({
+    getUsers: () => dispatch(getUsersAction()),
+    deleteUsers: () => dispatch(deleteUsersAction()),
+});
+
+const FooterContainer = (props) => {
     return (
-    <div>
-        <div id="getUsersBtn" onClick={getUsers}>Get Users</div>
-        <div id="deleteUsers" onClick={deleteUsers}>Delete Users</div>
-    </div>
+        <div>
+            <div id="getUsersBtn" onClick={props.getUsers}>Get Users</div>
+            <div id="deleteUsers" onClick={props.deleteUsers}>Delete Users</div>
+        </div>
     );
 }
 
-export default FooterContainer;
+export default connect(null, mapDispatchToProps)(FooterContainer);

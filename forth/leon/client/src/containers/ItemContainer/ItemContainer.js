@@ -2,19 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import ItemCard from "../../components/ItemCard/ItemCard";
-import Cart from "../../components/Cart/Cart";
-
 import fetchItems from "../../fetchUtils/fetchItems";
 
 import store from "../../store/store";
-import { addToCart, addItems } from "../../actions/actions";
+import { addToCartAction, addItemsAction } from "../../actions/actions";
 
 import "./ItemContainer.css";
 
 const mapStateToProps = (state) => ({ items: state.items });
 
 const mapDispatchToProps = dispatch => (
-    { addToCart: id => dispatch(addToCart(id)) }
+    { addToCart: id => dispatch(addToCartAction(id)) }
 );
 
 class ItemContainer extends Component {
@@ -22,7 +20,7 @@ class ItemContainer extends Component {
     componentDidMount() {
         fetchItems()
             .then((res) => {
-                store.dispatch(addItems(res));
+                store.dispatch(addItemsAction(res));
             });
     }
 
@@ -30,7 +28,6 @@ class ItemContainer extends Component {
         console.log(this.props)
         return (
             <div className="ItemContainer">
-                <Cart items={this.props.items}></Cart>
                 {this.props.items.map(item => <ItemCard
                     id={item.id}
                     desc={item.desc}

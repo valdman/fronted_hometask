@@ -6,9 +6,9 @@ import "./NavContainer.css";
 const NavContainer = () => {
     return (
     <div className="NavContainer">
-        <NavButton>Home</NavButton>
-        <NavButton>About us</NavButton>
-        <NavButton>FAQ</NavButton>
+        <NavButton link={"somelink1"}>Home</NavButton>
+        <NavButton link={"somelink2"}>About us</NavButton>
+        <NavButton link={"somelink3"}>FAQ</NavButton>
     </div>
     );
 }

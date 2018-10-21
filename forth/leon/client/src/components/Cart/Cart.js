@@ -1,8 +1,13 @@
 import React, { Component, Fragment } from "react";
-import getCart from "../../fetchUtils/getCart";
 import parseCart from "../../fetchUtils/parseCart";
+import { connect } from "react-redux";
 
 import "./Cart.css";
+
+const mapStateToProps = state => ({
+  items: state.items,
+  itemsInCart: state.itemsInCart,
+});
 
 class Cart extends Component {
   constructor(props) {
@@ -10,27 +15,29 @@ class Cart extends Component {
 
     this.state = {
       shown: false,
-      inCart: {}
     }
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
-    getCart().then((res) => {
-      this.setState({ inCart: parseCart(res) })
+    this.setState({
+      shown: !this.state.shown,
     })
   }
 
   render() {
     const allItems = this.props.items;
-    const propriateItems = allItems.filter(item => item.id in this.state.inCart);
-    const smallItems = propriateItems.map(item => ({ name: item.name, price: item.price, amount: this.state.inCart[item.id] }));
+    const parsedItemsInCart = parseCart(this.props.itemsInCart);
+    const propriateItems = allItems.filter(item => item.id in parsedItemsInCart);
+    const smallItems = propriateItems.map(item => ({ name: item.name, price: item.price, amount: parsedItemsInCart[item.id] }));
 
     return (
       <Fragment>
-        <div onClick={this.handleClick} className="Cart">Cart</div>
-        <div className="CartWrapper" >
+        <div
+          onClick={this.handleClick}
+          className="Cart">Cart</div>
+        <div className="CartWrapper" hidden={!this.state.shown}>
           {smallItems.map(item => <div key={"item" + item.id}>{item.name} x{item.amount} {item.price} </div>)}
         </div>
       </Fragment>
@@ -38,4 +45,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+export default connect(mapStateToProps, null)(Cart);

@@ -1,24 +1,22 @@
 import React, { Component } from "react";
-import loginUser from "../../fetchUtils/loginUser";
 import { connect } from "react-redux";
-
-import { login, register } from "../../actions/actions";
+import { loginAction, registerAction } from "../../actions/actions";
 
 import "./LoginForm.css";
 
+const mapStateToProps = state => ({
+  session: state.session,
+});
+
 const mapDispatchToProps = dispatch => ({
-  login: (e) => {
-    console.log(this);
-    e.preventDefault();
-    dispatch(login(this.state.value))
-  },
+  login: (input) => dispatch(loginAction(input)),
+  register: (input) => dispatch(registerAction(input)),
 });
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
@@ -26,29 +24,23 @@ class LoginForm extends Component {
     };
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    loginUser(this.state.value);
-  }
-
   handleChange(event) {
     this.setState({ value: event.target.value })
   }
 
   render() {
+    const buttonText = this.props.session === "unauthorized" ? "Register" : "Login of change user";
+    const buttonClick = this.props.session === "unauthorized" ? this.props.register.bind(this, this.state.value) : this.props.login.bind(this, this.state.value);
     return (
-      <form
-        //onSubmit={this.handleSubmit}
-        onSubmit={this.props.login}
-        action="" >
-        <label>Login:
-          <input type="text" value={this.state.value} onChange={this.handleChange}></input>
-        </label>
-        <input type="submit" value="submit"></input>
-      </form>
+      <div>
+        <label> Login:
+          <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} required></input>
+        </label >
+        <button type="button" onClick={buttonClick}>{buttonText}</button>
+      </div>
     );
   }
 }
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
 

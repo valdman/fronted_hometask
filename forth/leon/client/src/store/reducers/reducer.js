@@ -27,7 +27,7 @@ const getSession = (state, action) => {
                 registerTime: Date.now()
             }
         default:
-            return "unauthorized"
+            return state.session
     }
 }
 
