@@ -1,0 +1,9 @@
+.to-do-list {
+   display: flex;
+   justify-content: flex-start;
+   flex-wrap: wrap;
+   max-width: 400px;
+   background-color: #ecf0f1;
+   padding: 10px;
+   border-radius: 5px;
+}

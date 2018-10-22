@@ -1,0 +1,32 @@
+.menu-bar {
+   width: 100%;
+   border-bottom: 1px solid #CCC;
+}
+
+.menu-bar .container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.menu-bar .container ul {
+   display: flex;
+   flex-wrap: nowrap;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+.menu-bar .container ul li {
+   display: block;
+   padding: 15px 30px;
+   transition: .3s;
+   color: #333333;
+   text-decoration: none;
+   text-transform: uppercase;
+   cursor: pointer;
+}
+
+.menu-bar .container ul li:hover {
+   background-color: #f5f5f5;
+}
