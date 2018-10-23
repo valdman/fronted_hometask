@@ -1,0 +1,41 @@
+.ItemsList{
+    font-size: 20px;
+}
+ul {
+    list-style-type: none;
+
+}
+#BuyButton{
+    font-size: 32px;
+    color: white;
+    height: 50px;
+    width: 300px;
+    text-align: center;
+    background-color: rgb(155, 56, 255);
+    border-radius: 30px;
+    align-self: center;
+}
+.Cart{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;    
+}
+
+.Name :last-child {
+    font-size: 30px;
+} 
+.Name :first-child{
+    color: rgb(155, 56, 255);
+
+}
+.Description :first-child{
+    color: rgb(155, 56, 255);
+} 
+.Count :first-child{
+    color: rgb(155, 56, 255);
+
+}
+
+#BuyButton:hover{
+    color: black;
+}

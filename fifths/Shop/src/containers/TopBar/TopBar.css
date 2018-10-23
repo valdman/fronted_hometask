@@ -1,0 +1,32 @@
+.TopBar{
+    background-color: black;
+    color: white;
+    height: 60px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+#ShopName{
+    color:rgb(155, 56, 255);
+    font-size: 32px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+.leftItemsOnTopBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.rightItemsOnTopBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-left: 5px;
+    margin-right: 10px;
+}
