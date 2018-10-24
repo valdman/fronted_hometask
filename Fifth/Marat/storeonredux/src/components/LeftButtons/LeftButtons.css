@@ -1,0 +1,23 @@
+.Left_buttons{
+    
+    justify-content: flex-start;
+    
+    padding: 10px;
+
+    color: aliceblue;
+
+    font-family: Comic Sans MS, Verdana, monospace;
+
+    background-color: transparent;
+
+    border: none;
+}
+
+a{
+   
+    text-decoration: none;
+}
+
+a:hover{
+    color:rgb(0, 132, 255);
+}
