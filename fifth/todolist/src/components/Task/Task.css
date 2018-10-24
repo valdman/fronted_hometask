@@ -1,0 +1,10 @@
+.task {
+   display: block;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.task:not(:last-child) {
+   margin-bottom: 10px;
+}

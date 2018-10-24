@@ -1,0 +1,34 @@
+.login-block {
+   display: flex;
+   justify-content: flex-end;
+}
+
+.login-block input, 
+.login-block button {
+   box-sizing: border-box;
+   height: 25px;
+}
+
+.login-block input {
+   padding: 10px;
+   margin-right: -1px;
+   width: 150px;
+   border: 1px solid #CCC;
+   outline: none;
+   font-size: 12px;
+}
+
+.login-block button {
+   padding: 0 15px;
+   border: none;
+   outline: none;
+   background-color: #3498db;
+   color: #ffffff;
+   font-size: 14px;
+   text-transform: uppercase;
+   cursor: pointer;
+}
+
+.login-block button:hover {
+   background-color: #2980b9;
+}
