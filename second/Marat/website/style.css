@@ -1,0 +1,45 @@
+
+
+.container{
+    display: flex;
+    justify-content: flex-start;
+    height: 40px;
+    flex-wrap: wrap;
+}
+#goods.container{
+    padding: 10px;
+    height: auto;
+}
+.elems{
+    margin: 9px;
+    line-height: 100%;
+}
+.right{
+    margin-left: auto;
+    margin-right: 2em;
+}
+#header{
+    background-color: whitesmoke;
+    min-width: auto;
+    height: 40px;
+    text-align: right;
+    padding-top: 5px;
+ }
+.itemBox{
+    width: 250px;
+    height: 350px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    border: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: grey;
+
+    cursor: pointer;
+
+    text-align: center;
+}
+
+ 
