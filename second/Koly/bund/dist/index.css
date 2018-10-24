@@ -1,0 +1,104 @@
+.topPanel{
+    height: 60px;
+    margin: 0px;
+    padding: 0px;
+
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    align-items:center;
+
+    background-color: lightgray;
+}
+.leftTopPanel{
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-flow: row wrap;
+    align-items:center;
+    
+
+    margin: 0px;
+    padding: 0px;
+}
+.rightTopPanel{
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+    flex-grow: 1;
+    flex-flow: row wrap;
+    align-items:center;
+
+    font-size: 24px;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    padding: 0px;
+    margin: 0px;
+}
+.button{
+    flex-shrink: 1;
+    
+    display: block;
+    margin: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    
+    font-size: 24px;  
+}
+a{
+    text-decoration: none;
+    color:  darkcyan;
+}
+a:hover{
+    font-size: 32px;
+}
+#nameOfShop{
+    margin: 5px;
+    font-size: 32px;
+}
+#login{
+    font-size: 16 px;
+}
+#items{
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin: 0px;
+    padding: 5px;
+}
+.element{
+ display: flex;
+ 
+ flex-direction: column;
+ justify-content: space-between;
+ height: 550px;
+ padding: 5px;
+ margin: 5px;
+ width: 300px;
+ 
+}
+.product{
+    width: 100%;
+}
+.nameOfProduct{
+    font-size: 32px;
+    text-align: center;
+}
+.price{
+    font-size: 28px;
+    text-align: end;
+}
+.description{
+    font-size: 24px;
+}
+.byProduct{
+    background-color: lightseagreen;
+    
+
+    margin: 5px;
+    height: 40px;
+    font-size: 32px;
+    width: 100%;
+}
