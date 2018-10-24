@@ -1,0 +1,12 @@
+#taskCreator{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+#newTask{
+    margin: 5px;
+}
+#reateTask{
+    margin: 5px;
+}

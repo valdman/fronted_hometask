@@ -1,0 +1,33 @@
+.country {
+   display: flex;
+   flex-wrap: nowrap;
+   justify-content: flex-start;
+   align-items: center;
+   padding: 0 10px;
+   box-sizing: border-box;
+}
+
+.country:last-child {
+   border-bottom: none;
+}
+
+.country img {
+   width: 32px;
+   height: 32px;
+   margin-right: 10px;
+}
+
+.country span {
+   flex-grow: 1;
+   padding: 7px 0;
+   border-bottom: .5px solid #333;
+}
+
+.country:last-child span {
+   border-bottom: none;
+}
+
+.country:hover {
+   background-color: #CCC;
+   cursor: pointer;
+}
