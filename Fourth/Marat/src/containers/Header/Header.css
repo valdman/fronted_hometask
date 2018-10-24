@@ -1,0 +1,15 @@
+.Header{
+    display: flex; 
+    justify-content: space-between;
+
+    align-items: center;
+
+    width: auto;
+
+    min-height: 50px;
+    height: auto;
+
+    border-radius: 25px;
+
+    background-color: black;
+}
